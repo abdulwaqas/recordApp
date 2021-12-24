@@ -1,0 +1,30 @@
+
+
+<p>
+  <strong>Title:</strong>
+  <%= @c_transaction.title %>
+</p>
+
+<p>
+  <strong>Details:</strong>
+  <%= @c_transaction.details %>
+</p>
+
+<p>
+  <strong>Credit:</strong>
+  <%= @c_transaction.credit %>
+</p>
+
+<p>
+  <strong>Debit:</strong>
+  <%= @c_transaction.debit %>
+</p>
+
+<p>
+  <strong>Balance:</strong>
+  <%= @c_transaction.balance %>
+</p>
+
+
+<%= link_to 'Edit', edit_c_transaction_path(@c_transaction) %> |
+<%= link_to 'Back', customers_path %>

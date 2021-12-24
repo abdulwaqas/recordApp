@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>S Transactions</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Details</th>
+      <th>Credit</th>
+      <th>Debit</th>
+      <th>Balance</th>
+      <th>Supplier</th>
+      <th>User</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @s_transactions.each do |s_transaction| %>
+      <tr>
+        <td><%= s_transaction.title %></td>
+        <td><%= s_transaction.details %></td>
+        <td><%= s_transaction.credit %></td>
+        <td><%= s_transaction.debit %></td>
+        <td><%= s_transaction.balance %></td>
+        <td><%= s_transaction.supplier_id %></td>
+        <td><%= s_transaction.user_id %></td>
+        <td><%= link_to 'Show', s_transaction %></td>
+        <td><%= link_to 'Edit', edit_s_transaction_path(s_transaction) %></td>
+        <td><%= link_to 'Destroy', s_transaction, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New S Transaction', new_s_transaction_path %>

@@ -1,0 +1,41 @@
+
+<h1>Customers</h1>
+
+<table class="table table-striped table-bordered table-hover">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Phone</th>
+      <th>Email</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @customers.each do |customer| %>
+      <tr>
+        <td><%= link_to customer.name, customer %></td>
+        <td><%= customer.phone %></td>
+        <td><%= customer.email %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%credit_sum=0%>
+<%debit_sum=0%>
+
+<% @c_transactions.each do |c_transaction| %>
+
+      <%if c_transaction.credit != nil%>
+
+        <%credit_sum=credit_sum + c_transaction.credit %>
+      <%end%>
+
+      <%if c_transaction.debit != nil%>
+        <%debit_sum = debit_sum + c_transaction.debit %>
+
+      <%end%>
+      
+<% end %>
+Total credit Amount = <%= credit_sum%>
+<br/>
+Total Debit Amount = <%= debit_sum%>

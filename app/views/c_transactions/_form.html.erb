@@ -1,0 +1,47 @@
+<%= form_with(model: c_transaction) do |form| %>
+  <% if c_transaction.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(c_transaction.errors.count, "error") %> prohibited this c_transaction from being saved:</h2>
+
+      <ul>
+        <% c_transaction.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :details %>
+    <%= form.text_field :details %>
+  </div>
+ 
+<%if @c_transaction.credit!=0%>
+  <div class="field">
+    <%= form.label :credit %>
+    <%= form.number_field :credit %>
+
+    
+  </div>
+<%end %>
+
+<%if @c_transaction.debit!=0%>
+
+  <div class="field">
+    <%= form.label :debit %>
+    <%= form.number_field :debit %>
+  </div>
+  <%end %>
+
+
+
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

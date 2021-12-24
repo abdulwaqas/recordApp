@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  details: MyString
+  credit: 1
+  debit: 1
+  balance: 1
+  supplier: one
+  user: one
+
+two:
+  title: MyString
+  details: MyString
+  credit: 1
+  debit: 1
+  balance: 1
+  supplier: two
+  user: two

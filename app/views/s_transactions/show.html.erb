@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @s_transaction.title %>
+</p>
+
+<p>
+  <strong>Details:</strong>
+  <%= @s_transaction.details %>
+</p>
+
+<p>
+  <strong>Credit:</strong>
+  <%= @s_transaction.credit %>
+</p>
+
+<p>
+  <strong>Debit:</strong>
+  <%= @s_transaction.debit %>
+</p>
+
+<p>
+  <strong>Balance:</strong>
+  <%= @s_transaction.balance %>
+</p>
+
+<p>
+  <strong>Supplier:</strong>
+  <%= @s_transaction.supplier_id %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @s_transaction.user_id %>
+</p>
+
+<%= link_to 'Edit', edit_s_transaction_path(@s_transaction) %> |
+<%= link_to 'Back', s_transactions_path %>
