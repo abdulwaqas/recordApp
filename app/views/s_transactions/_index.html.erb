@@ -1,0 +1,54 @@
+
+<table class="table table-striped table-bordered table-hover">
+<thead>
+    <tr>
+      <th>Title</th>
+      <th>Details</th>
+      <th>Date</th>
+      <th>Credit</th>
+      <th>Debit</th>
+      <th>Balance</th>
+    </tr>
+  </thead>
+
+  <tbody>
+   <% prvious_balance = 0 %>
+    <% @s_transactions.each do |s_transaction| %>
+      <tr>
+      <%if($supplier.id==s_transaction.supplier_id)%>
+
+      <%  s_transaction.balance=prvious_balance %>
+      <%if s_transaction.debit != nil%>
+        <%  s_transaction.balance = s_transaction.balance - s_transaction.debit %>
+      <%end %>
+      <%if s_transaction.credit != nil%>
+        <% s_transaction.balance = s_transaction.balance + s_transaction.credit %>
+      <%end %>
+
+
+        <td><%= link_to s_transaction.title , s_transaction %></td>
+        <td><%= s_transaction.details %></td>
+        <td><%= s_transaction.created_at.strftime('%B %d %Y, %l:%M%P') %></td>
+        <td><%= s_transaction.credit %></td>
+        <td><%= s_transaction.debit %></td>
+        <td><%= s_transaction.balance %></td>
+
+     
+        <% prvious_balance = s_transaction.balance %>
+        <%end%>
+
+        </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<h5><%= " Balance of #{@supplier.name} is #{prvious_balance}" %></h5>
+
+<br>
+
+<%= link_to 'YOU GAVE', new_s_transaction_path(:debit => '0' ),class:"btn btn-primary"%>
+
+<%= link_to 'YOU GOT', new_s_transaction_path(:credit => '0' ),class:"btn btn-primary"%>
+

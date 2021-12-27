@@ -27,15 +27,20 @@
 
       <%if c_transaction.credit != nil%>
 
-        <%credit_sum=credit_sum + c_transaction.credit %>
+        <% credit_sum=credit_sum + c_transaction.credit %>
       <%end%>
 
       <%if c_transaction.debit != nil%>
-        <%debit_sum = debit_sum + c_transaction.debit %>
+        <% debit_sum = debit_sum + c_transaction.debit %>
 
       <%end%>
       
 <% end %>
-Total credit Amount = <%= credit_sum%>
-<br/>
-Total Debit Amount = <%= debit_sum%>
+</br>
+
+ <p><%= "Total credit Amount of All Customers =  #{credit_sum}"%></p>
+
+ <p><%="Total Debit Amount of All Customers =  #{debit_sum}"%></p>
+
+ <p><%="Total Balance of All Customers =  #{credit_sum-debit_sum}"%></p>
+

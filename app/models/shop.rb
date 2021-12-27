@@ -14,7 +14,6 @@ private
     def destory_tenant
         shop = Shop.find(self.id)
         Apartment::Tenant.drop(shop.subdomain)
-       
         
     end
 end

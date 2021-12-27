@@ -19,13 +19,7 @@
 
     <% @c_transactions.each do |c_transaction| %>
       <tr>
-
-
-      
-        
-
     <%if($customer.id==c_transaction.customer_id)%>
-
 
     <%  c_transaction.balance=prvious_balance %>
 
@@ -64,6 +58,8 @@
     <% end %>
   </tbody>
 </table>
+<br>
+<h5><%= " Balance of #{@customer.name} is #{prvious_balance}" %></h5>
 
 <br>
 

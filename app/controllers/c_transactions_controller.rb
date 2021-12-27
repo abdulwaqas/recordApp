@@ -4,7 +4,6 @@ before_action :set_c_transaction, only: %i[ show edit update destroy ]
 
   def new
     @customers=Customer.all
-    @cust=@customers.name
     @c_transaction = CTransaction.new
     @c_transaction.credit=params[:credit]
     @c_transaction.debit=params[:debit]

@@ -10,38 +10,41 @@
       </ul>
     </div>
   <% end %>
-
+  <br>
   <div class="field">
     <%= form.label :title %>
     <%= form.text_field :title %>
   </div>
+  <br>
 
   <div class="field">
     <%= form.label :details %>
     <%= form.text_field :details %>
   </div>
- 
+  <br>
+
 <%if @c_transaction.credit!=0%>
   <div class="field">
-    <%= form.label :credit %>
+    <%= "You Gave" %>
     <%= form.number_field :credit %>
 
     
   </div>
+  <br>
 <%end %>
+
 
 <%if @c_transaction.debit!=0%>
 
   <div class="field">
-    <%= form.label :debit %>
+    <%= "You Got" %>
     <%= form.number_field :debit %>
   </div>
+  <br>
+
   <%end %>
 
-
-
-
-  <div class="actions">
-    <%= form.submit %>
+  <div  >
+    <%= form.submit "Submit", class: "btn btn-primary"%>
   </div>
 <% end %>

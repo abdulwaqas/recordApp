@@ -9,22 +9,20 @@
   <strong>Details:</strong>
   <%= @c_transaction.details %>
 </p>
-
+<%if @c_transaction.credit != nil%>
 <p>
   <strong>Credit:</strong>
   <%= @c_transaction.credit %>
 </p>
-
+<%end%>
+<%if @c_transaction.debit != nil%>
 <p>
   <strong>Debit:</strong>
   <%= @c_transaction.debit %>
 </p>
+<%end%>
 
 <p>
-  <strong>Balance:</strong>
-  <%= @c_transaction.balance %>
+  <strong>Transaction By User:</strong>
+  <%= @c_transaction.user.name %>
 </p>
-
-
-<%= link_to 'Edit', edit_c_transaction_path(@c_transaction) %> |
-<%= link_to 'Back', customers_path %>

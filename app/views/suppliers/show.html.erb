@@ -1,19 +1,21 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @supplier.name %>
-</p>
+<div class="jumbotron">
+<h1 class="display-4">
+<%= @supplier.name %>
+<%=  %>
 
-<p>
-  <strong>Phone:</strong>
-  <%= @supplier.phone %>
-</p>
 
-<p>
-  <strong>Email:</strong>
-  <%= @supplier.email %>
-</p>
+</h1>
+<br/>
+<p> <%= @supplier.email %> | <%= @supplier.phone %></p>
+<%= link_to 'Edit', edit_supplier_path(@supplier),class:"btn btn-primary"%> | 
+<td><%= link_to 'Destroy', @supplier,class:"btn btn-danger",method: :delete, data: { confirm: 'Are you sure?' } %></td>
 
-<%= link_to 'Edit', edit_supplier_path(@supplier) %> |
-<%= link_to 'Back', suppliers_path %>
+</div>
+
+</br>
+<h1><%="All Transactions \"#{@supplier.name} \""%></h1>
+</br>
+
+      <%= render 's_transactions/index' %>
+

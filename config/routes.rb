@@ -1,16 +1,18 @@
 Rails.application.routes.draw do
-
-
-  # get 'c_transactions/new' , to: 'c_transactions#new'
-  resources :s_transactions
-  resources :c_transactions
-  resources :suppliers
-  resources :customers
-  devise_for :users
+  root 'home#index'
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
-  root 'home#index'
+    devise_for :users
+
+  resources :suppliers 
+  resources :s_transactions
+
+
+  resources :customers 
+  resources :c_transactions
   
+  
+
 
 
 

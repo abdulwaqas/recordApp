@@ -1,39 +1,20 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
+<div class="jumbotron">
+  <h1 class="display-4">
   <%= @s_transaction.title %>
-</p>
+  <%=  %>
+  
+  
+  </h1>
+  <br/>
+  <p class="lead">   Details :   <%= @s_transaction.details %> </p>
+  <%if @s_transaction.credit != nil%>
+    <p class="lead"> Amount :    <%=  @s_transaction.credit %></p>
+    <%elsif @s_transaction.debit != nil%>
+    <p class="lead">   Amount :   <%= @s_transaction.details %> </p>
+    <%end%>
+    <p class="lead"> Transaction By User :    <%=  @s_transaction.user.name %></p>
+    <br>
+    <td><%= link_to 'Destroy', @s_transaction,class:"btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %></td>
 
-<p>
-  <strong>Details:</strong>
-  <%= @s_transaction.details %>
-</p>
-
-<p>
-  <strong>Credit:</strong>
-  <%= @s_transaction.credit %>
-</p>
-
-<p>
-  <strong>Debit:</strong>
-  <%= @s_transaction.debit %>
-</p>
-
-<p>
-  <strong>Balance:</strong>
-  <%= @s_transaction.balance %>
-</p>
-
-<p>
-  <strong>Supplier:</strong>
-  <%= @s_transaction.supplier_id %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @s_transaction.user_id %>
-</p>
-
-<%= link_to 'Edit', edit_s_transaction_path(@s_transaction) %> |
-<%= link_to 'Back', s_transactions_path %>
+</div>
