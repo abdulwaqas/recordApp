@@ -1,0 +1,20 @@
+<%= form_for :tenant, url: tenant_sessions_path do |form| %>
+  
+
+  <div class="jumbotron">
+<h5 class="display-4">
+<%= "Please Enter your Shop Name"%>
+</h5>
+<br>
+ <div class="field">
+    
+      <%= form.text_field :name %>
+    </div>
+  
+    <br>
+    <div>
+      <%= form.submit"Submit", class:"btn btn-primary"%>
+    </div>
+</div>
+   
+<% end %>

@@ -4,9 +4,9 @@
 # Apartment can support many different "Elevators" that can take care of this routing to your data.
 # Require whichever Elevator you're using below or none if you have a custom one.
 #
-# require 'apartment/elevators/generic'
+require 'apartment/elevators/generic'
 # require 'apartment/elevators/domain'
-require 'apartment/elevators/subdomain'
+# require 'apartment/elevators/subdomain'
 # require 'apartment/elevators/first_subdomain'
 # require 'apartment/elevators/host'
 
@@ -50,7 +50,7 @@ Apartment.configure do |config|
   #   end
   # end
   #
-  config.tenant_names = -> { Shop.pluck :subdomain }
+  config.tenant_names = lambda { Shop.pluck :name }
   
   # config.excluded_models = ["AdminUser"]
 
@@ -111,7 +111,9 @@ end
 # Rails.application.config.middleware.use Apartment::Elevators::Generic, lambda { |request|
 #   request.host.split('.').first
 # }
-
+Rails.application.config.middleware.use Apartment::Elevators::Generic, lambda { |request|
+  request.session[:tenant] ? request.session[:tenant] : 'public'
+}
 # Rails.application.config.middleware.use Apartment::Elevators::Domain
 # Rails.application.config.middleware.use Apartment::Elevators::Subdomain
 # Rails.application.config.middleware.use Apartment::Elevators::FirstSubdomain

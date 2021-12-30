@@ -12,7 +12,6 @@ class STransactionsController < InheritedResources::Base
     @s_transaction = STransaction.new
     @s_transaction.credit=params[:credit]
     @s_transaction.debit=params[:debit]
-
   end
 
   def show

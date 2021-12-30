@@ -11,7 +11,8 @@ Rails.application.routes.draw do
   resources :customers 
   resources :c_transactions
   
-  
+  resources :tenant_sessions, only: [:new, :create]
+
 
 
 
