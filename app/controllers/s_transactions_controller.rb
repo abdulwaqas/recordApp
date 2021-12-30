@@ -25,7 +25,7 @@ class STransactionsController < InheritedResources::Base
     @s_transaction.user_id= current_user.id
     @s_transaction.supplier_id=$supplier.id
 
-    if !(@c_transaction.title.nil? ||@c_transaction.title.empty?)
+    if !(@s_transaction.title.nil? ||@s_transaction.title.empty?)
 
 
       respond_to do |format|
