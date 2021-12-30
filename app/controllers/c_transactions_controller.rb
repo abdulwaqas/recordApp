@@ -1,4 +1,6 @@
 class CTransactionsController < InheritedResources::Base
+  before_action :tenant_session
+
 before_action :set_c_transaction, only: %i[ show edit update destroy ]
   
 
@@ -17,7 +19,7 @@ before_action :set_c_transaction, only: %i[ show edit update destroy ]
   end
 
   def show
-    authorize CTransaction
+    authorize Transaction
   end
 
 

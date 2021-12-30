@@ -1,5 +1,5 @@
 class TenantSessionsController < ApplicationController
-    skip_before_action :tenant_session
+  
   
     #layout 'devise'
   
