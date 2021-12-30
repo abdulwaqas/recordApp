@@ -7,4 +7,4 @@ Shop.create!(name: 'admin')
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 # AdminUser.create!(email: 'abc@abc123.com', password: 'abcabc', password_confirmation: 'abcabc') if Rails.env.development?
-AdminUser.find_by_email("abc@abc123.com") || AdminUser.create!(email: "abc@abc123.com", password: "abcabc", password_confirmation: "abcabc")
+# AdminUser.find_by_email("abc@abc123.com") || AdminUser.create!(email: "abc@abc123.com", password: "abcabc", password_confirmation: "abcabc")
