@@ -2,13 +2,11 @@
 <div class="jumbotron">
 <h1 class="display-4">
 <%= @customer.name %>
-<%=  %>
-
-
 </h1>
 <br/>
 <p> <%= @customer.email %> | <%= @customer.phone %></p>
 <%= link_to 'Edit', edit_customer_path(@customer),class:"btn btn-primary"%>
+<td><%= link_to 'Destroy', @customer,class:"btn btn-danger",method: :delete, data: { confirm: 'Are you sure?' } %></td>
 
 </div>
 
@@ -19,3 +17,5 @@
 </br>
 
       <%= render 'c_transactions/index' %>
+      </br>
+      </br>

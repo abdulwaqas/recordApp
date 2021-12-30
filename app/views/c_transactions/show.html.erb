@@ -1,28 +1,20 @@
 
-
-<p>
-  <strong>Title:</strong>
+<div class="jumbotron">
+  <h1 class="display-4">
   <%= @c_transaction.title %>
-</p>
+  
+  </h1>
+  <br/>
+  <p class="lead">   Details :   <%= @c_transaction.details %> </p>
+  <%if @c_transaction.credit != nil%>
+  <p class="lead"> Amount :    <%=  @c_transaction.credit %></p>
+  <%elsif @c_transaction.debit != nil%>
+  <p class="lead">   Amount :   <%= @c_transaction.debit %> </p>
+    <%end%>
+    <p class="lead"> Transaction By User :    <%=  @c_transaction.user.name %></p>
+    <br>
+    <%= link_to 'Edit', edit_c_transaction_path(@c_transaction),class:"btn btn-primary"%> | 
 
-<p>
-  <strong>Details:</strong>
-  <%= @c_transaction.details %>
-</p>
-<%if @c_transaction.credit != nil%>
-<p>
-  <strong>Credit:</strong>
-  <%= @c_transaction.credit %>
-</p>
-<%end%>
-<%if @c_transaction.debit != nil%>
-<p>
-  <strong>Debit:</strong>
-  <%= @c_transaction.debit %>
-</p>
-<%end%>
+    <td><%= link_to 'Destroy', @c_transaction,class:"btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %></td>
 
-<p>
-  <strong>Transaction By User:</strong>
-  <%= @c_transaction.user.name %>
-</p>
+</div>

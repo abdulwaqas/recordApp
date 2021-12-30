@@ -6,11 +6,11 @@
     <tr>
       <th>Title</th>
       <th>Details</th>
+      <th>Date</th>
       <th>You Gave</th>
       <th>You Got</th>
       <th>Balance</th>
-      <th>Date</th>
-      <th colspan="2"></th>
+      <th colspan="1"></th>
     </tr>
   </thead>
 
@@ -19,42 +19,27 @@
 
     <% @c_transactions.each do |c_transaction| %>
       <tr>
-    <%if($customer.id==c_transaction.customer_id)%>
+      <%if($customer.id==c_transaction.customer_id)%>
 
-    <%  c_transaction.balance=prvious_balance %>
+          <%  c_transaction.balance=prvious_balance %>
+          <%if c_transaction.debit != nil%>
+            <% c_transaction.balance = c_transaction.balance - c_transaction.debit %>
+          <%end %>
+          <%if c_transaction.credit != nil%>
+            <% c_transaction.balance = c_transaction.balance + c_transaction.credit %>
+          <%end %>
 
-    <%if c_transaction.debit != nil%>
-
-
-    <%  c_transaction.balance = c_transaction.balance - c_transaction.debit %>
-
-      <%end %>
-    <%if c_transaction.credit != nil%>
-      <% c_transaction.balance = c_transaction.balance + c_transaction.credit %>
-      <%end %>
-
-
-
-
-      <td><%= link_to c_transaction.title, c_transaction %></td>
-
-
-      
-        <td><%= c_transaction.details %></td>
-        <td><%= c_transaction.credit %></td>
-        <td><%= c_transaction.debit %></td>
-        <td><%= c_transaction.balance %></td>
-        <td><%= c_transaction.created_at.strftime('%B %d %Y, %l:%M%P') %></td>
-        <td><%= link_to 'Destroy', c_transaction, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        
-        <% prvious_balance = c_transaction.balance %>
-
-      
-        <%end%>
-      
-        
-
-        </tr>
+          <td><%= link_to c_transaction.title, c_transaction %></td>
+          <td><%= c_transaction.details %></td>
+          <td><%= c_transaction.created_at.strftime('%B %d %Y, %l:%M%P') %></td>
+          <td><%= c_transaction.credit %></td>
+          <td><%= c_transaction.debit %></td>
+          <td><%= c_transaction.balance %></td>
+          <td><%= link_to 'Destroy', c_transaction, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          
+          <% prvious_balance = c_transaction.balance %>
+      <%end%>
+      </tr>
     <% end %>
   </tbody>
 </table>
@@ -63,9 +48,9 @@
 
 <br>
 
-<%= link_to 'YOU GAVE', new_c_transaction_path(:debit => '0' ),class:"btn btn-primary"%>
+<%= link_to 'YOU GAVE', new_c_transaction_path(:credit => '0' ),class:"btn btn-primary"%>
 
-<%= link_to 'YOU GOT', new_c_transaction_path(:credit => '0' ),class:"btn btn-primary"%>
+<%= link_to 'YOU GOT', new_c_transaction_path(:debit => '0' ),class:"btn btn-primary"%>
 
 
 

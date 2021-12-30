@@ -5,8 +5,8 @@
       <th>Title</th>
       <th>Details</th>
       <th>Date</th>
-      <th>Credit</th>
-      <th>Debit</th>
+      <th>PURCHASE</th>
+      <th>PAYMENT</th>
       <th>Balance</th>
     </tr>
   </thead>
@@ -43,12 +43,15 @@
 </table>
 
 <br>
+<%if prvious_balance>=0%>
+<h5><%= " You give \"#{@supplier.name}\" is  = \"#{prvious_balance}\"" %></h5>
+<%else%>
+<h5><%= " Advance Payment to \"#{@supplier.name}\" is  = \"#{prvious_balance.abs}\"" %></h5>
 
-<h5><%= " Balance of #{@supplier.name} is #{prvious_balance}" %></h5>
-
+<%end%>
 <br>
 
-<%= link_to 'YOU GAVE', new_s_transaction_path(:debit => '0' ),class:"btn btn-primary"%>
+<%= link_to 'PURCHASE', new_s_transaction_path(:credit => '0' ),class:"btn btn-primary"%>
 
-<%= link_to 'YOU GOT', new_s_transaction_path(:credit => '0' ),class:"btn btn-primary"%>
+<%= link_to 'PAYMENT', new_s_transaction_path(:debit => '0' ),class:"btn btn-primary"%>
 

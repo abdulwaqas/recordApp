@@ -11,10 +11,14 @@
   <%if @s_transaction.credit != nil%>
     <p class="lead"> Amount :    <%=  @s_transaction.credit %></p>
     <%elsif @s_transaction.debit != nil%>
-    <p class="lead">   Amount :   <%= @s_transaction.details %> </p>
+    <p class="lead">   Amount :   <%= @s_transaction.debit %> </p>
     <%end%>
     <p class="lead"> Transaction By User :    <%=  @s_transaction.user.name %></p>
     <br>
-    <td><%= link_to 'Destroy', @s_transaction,class:"btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    
+    <td>
+    <%= link_to 'Edit', edit_s_transaction_path(@s_transaction),class:"btn btn-primary"%> | 
+
+    <%= link_to 'Destroy', @s_transaction,class:"btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %></td>
 
 </div>

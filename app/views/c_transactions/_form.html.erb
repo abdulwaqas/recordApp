@@ -23,7 +23,7 @@
   </div>
   <br>
 
-<%if @c_transaction.credit!=0%>
+<%if @c_transaction.credit==0 ||@c_transaction.debit==nil%>
   <div class="field">
     <%= "You Gave" %>
     <%= form.number_field :credit %>
@@ -34,7 +34,7 @@
 <%end %>
 
 
-<%if @c_transaction.debit!=0%>
+<%if @c_transaction.debit==0 || @c_transaction.credit==nil%>
 
   <div class="field">
     <%= "You Got" %>
@@ -43,6 +43,11 @@
   <br>
 
   <%end %>
+  <div class="field">
+  <%=  form.label :Date %>
+  <%= form.datetime_field :created_at %>
+</div>
+<br>
 
   <div  >
     <%= form.submit "Submit", class: "btn btn-primary"%>

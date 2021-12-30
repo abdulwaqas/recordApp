@@ -41,9 +41,9 @@
 <% end %>
 </br>
 
- <p><%= "Total credit Amount of All Customers =  #{credit_sum}"%></p>
+ <p><%= "Total PURCHASE Amount of All Suppliers =  #{credit_sum}"%></p>
 
- <p><%="Total Debit Amount of All Customers =  #{debit_sum}"%></p>
-
- <p><%="Total Balance of All Customers =  #{credit_sum-debit_sum}"%></p>
+ <p><%="Total PAYMENT Amount of All Supplier =  #{debit_sum}"%></p>
+  <% remain_balance=credit_sum-debit_sum%>
+  <p><%="Total Payment Remain of All Suppliers =  #{remain_balance}"%></p>
 
