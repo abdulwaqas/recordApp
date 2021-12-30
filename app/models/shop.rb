@@ -7,13 +7,13 @@ class Shop < ApplicationRecord
 private
 
     def create_tenant
-        Apartment::Tenant.create(subdomain)
+        Apartment::Tenant.create(name)
         
     end
 
     def destory_tenant
         shop = Shop.find(self.id)
-        Apartment::Tenant.drop(shop.subdomain)
+        Apartment::Tenant.drop(shop.name)
         
     end
 end
