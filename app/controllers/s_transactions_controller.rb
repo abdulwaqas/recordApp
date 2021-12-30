@@ -26,15 +26,17 @@ class STransactionsController < InheritedResources::Base
     @s_transaction.user_id= current_user.id
     @s_transaction.supplier_id=$supplier.id
 
-    
+    if !(@c_transaction.title.nil? ||@c_transaction.title.empty?)
 
-    respond_to do |format|
-      if @s_transaction.save
-        format.html { redirect_to @s_transaction, notice: "Transction was successfully created." }
-        format.json { render :show, status: :created, location: @s_transaction }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @s_transaction.errors, status: :unprocessable_entity }
+
+      respond_to do |format|
+        if @s_transaction.save
+          format.html { redirect_to @s_transaction, notice: "Transction was successfully created." }
+          format.json { render :show, status: :created, location: @s_transaction }
+        else
+          format.html { render :new, status: :unprocessable_entity }
+          format.json { render json: @s_transaction.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
