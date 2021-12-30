@@ -3,7 +3,7 @@
 #
 # Shop.destroy_all
 # Examples:
-Shop.create!(name: 'admin')
+Shop.create!(name: "admin", address: "admin",phone: "admin",subdomain: "admin")
 
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
