@@ -17,4 +17,5 @@ ActiveAdmin.register Shop do
     actions
   end
 
+  
 end

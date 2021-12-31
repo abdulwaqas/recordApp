@@ -33,4 +33,5 @@ class Users::SessionsController < Devise::SessionsController
       redirect_to [:new, :tenant_session]
     end
   end
+  
 end

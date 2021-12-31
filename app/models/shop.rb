@@ -11,6 +11,7 @@ private
         
     end
 
+    
     def destory_tenant
         shop = Shop.find(self.id)
         Apartment::Tenant.drop(shop.name)

@@ -4,6 +4,7 @@ ActiveAdmin.register_page "Dashboard" do
   content title: proc { I18n.t("active_admin.dashboard") } do
     
     a=Apartment::Tenant.current
+    
   
     div class: "blank_slate_container" do
       span class: "blank_slate" do
