@@ -25,9 +25,6 @@ class STransactionsController < InheritedResources::Base
     @s_transaction.user_id= current_user.id
     @s_transaction.supplier_id=$supplier.id
 
-    if !(@s_transaction.title.nil? ||@s_transaction.title.empty?)
-
-
       respond_to do |format|
         if @s_transaction.save
           format.html { redirect_to @s_transaction, notice: "Transction was successfully created." }
@@ -37,7 +34,7 @@ class STransactionsController < InheritedResources::Base
           format.json { render json: @s_transaction.errors, status: :unprocessable_entity }
         end
       end
-    end
+    
   end
 
 
@@ -66,7 +63,7 @@ class STransactionsController < InheritedResources::Base
 
     @s_transaction.destroy
     respond_to do |format|
-      format.html { redirect_to suppliers_url, notice: "Transction was successfully destroyed." }
+      format.html { redirect_to supplier_url(:id => @s_transaction.supplier), notice: "Transction was successfully destroyed." }
       format.json { head :no_content }
     end
   end

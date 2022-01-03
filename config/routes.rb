@@ -10,6 +10,9 @@ Rails.application.routes.draw do
 
 
   resources :suppliers 
+    
+
+  
   resources :s_transactions
 
 
@@ -17,8 +20,7 @@ Rails.application.routes.draw do
   resources :c_transactions
   
   resources :tenant_sessions, only: [:new, :create]
-
-
+  get ':name' => 'tenant_sessions#create'
 
 
 

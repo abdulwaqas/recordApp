@@ -16,5 +16,5 @@
     <%= link_to 'Edit', edit_c_transaction_path(@c_transaction),class:"btn btn-primary"%> | 
 
     <td><%= link_to 'Destroy', @c_transaction,class:"btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %></td>
-
+    | <%= link_to 'Back', customer_path(:id => @c_transaction.customer),class:"btn btn-primary"%> 
 </div>

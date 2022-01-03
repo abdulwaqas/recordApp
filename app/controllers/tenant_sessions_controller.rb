@@ -4,13 +4,14 @@ class TenantSessionsController < ApplicationController
     #layout 'devise'
   
     def new
-      # clean any logged user up
+ 
       reset_session
     end
   
     def create
-      if Shop.find_by(name: tenant_params[:name])
-        session[:tenant] = tenant_params[:name]
+      
+      if Shop.find_by(name: params[:name])
+        session[:tenant] = params[:name]
         redirect_to root_path
       else
         flash[:notice] = "Shop not found"
@@ -18,9 +19,5 @@ class TenantSessionsController < ApplicationController
       end
     end
   
-    protected
-  
-    def tenant_params
-      params.require(:tenant).permit(:name)
-    end
+   
   end

@@ -20,7 +20,6 @@ class CustomersController < InheritedResources::Base
     authorize Customer
     @customer = Customer.new(customer_params)
   
-    if !(@customer.name.nil? ||@customer.name.empty?)
      
       respond_to do |format|
         if @customer.save
@@ -31,10 +30,7 @@ class CustomersController < InheritedResources::Base
           format.json { render json: @customer.errors, status: :unprocessable_entity }
         end
       end
-    else
-      flash[:notice] = "Please fill Name box"
-      redirect_to(request.referrer || root_path)
-    end
+  
     
   end
 

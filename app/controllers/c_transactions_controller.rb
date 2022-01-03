@@ -1,6 +1,4 @@
 class CTransactionsController < InheritedResources::Base
-  before_action :tenant_session
-
 before_action :set_c_transaction, only: %i[ show edit update destroy ]
   
 
@@ -19,7 +17,7 @@ before_action :set_c_transaction, only: %i[ show edit update destroy ]
   end
 
   def show
-    authorize Transaction
+    authorize CTransaction
   end
 
 
@@ -27,9 +25,7 @@ before_action :set_c_transaction, only: %i[ show edit update destroy ]
     authorize CTransaction
     @c_transaction = CTransaction.new(c_transaction_params)
     @c_transaction.user_id= current_user.id
-    @c_transaction.customer_id=$customer.id
-    if !(@c_transaction.title.nil? ||@c_transaction.title.empty?)
-     
+    @c_transaction.customer_id=$customer.id     
       respond_to do |format|
         if @c_transaction.save
           format.html { redirect_to @c_transaction, notice: "Transction was successfully created." }
@@ -39,10 +35,7 @@ before_action :set_c_transaction, only: %i[ show edit update destroy ]
           format.json { render json: @c_transaction.errors, status: :unprocessable_entity }
         end
       end
-    else
-      flash[:notice] = "Please fill Title box"
-      redirect_to(request.referrer || root_path)
-    end
+   
   end
 
   def update
@@ -69,7 +62,7 @@ before_action :set_c_transaction, only: %i[ show edit update destroy ]
     authorize CTransaction
     @c_transaction.destroy
     respond_to do |format|
-      format.html { redirect_to customers_url, notice: "Transction was successfully destroyed." }
+      format.html { redirect_to customer_url(:id => @c_transaction.customer), notice: "Transction was successfully destroyed." }
       format.json { head :no_content }
     end
   end

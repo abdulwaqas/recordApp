@@ -17,9 +17,7 @@ class SuppliersController < InheritedResources::Base
   def create
     authorize Supplier
     @supplier = Supplier.new(supplier_params)
-  
-    if !(@supplier.name.nil? ||@supplier.name.empty?)
-     
+       
       respond_to do |format|
         if @supplier.save
           format.html { redirect_to @supplier, notice: "Supplier was successfully created." }
@@ -29,10 +27,6 @@ class SuppliersController < InheritedResources::Base
           format.json { render json: @supplier.errors, status: :unprocessable_entity }
         end
       end
-    else
-      flash[:notice] = "Please fill Name box"
-      redirect_to(request.referrer || root_path)
-    end
     
   end
 

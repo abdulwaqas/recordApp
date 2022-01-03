@@ -1,4 +1,5 @@
 class Shop < ApplicationRecord
+    validates :name, presence: true
     before_destroy :destory_tenant
     after_create :create_tenant 
 
